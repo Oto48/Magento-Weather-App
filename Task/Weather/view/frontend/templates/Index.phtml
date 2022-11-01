@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-8">
+        <form name="addData" method="get" id="addData" class="form"
+              action="<?php echo $this->getFormAction(); ?>"
+              data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>"
+              data-mage-init='{"validation":{}}'>
+            <fieldset class="fieldset">
+                <legend class="legend"><span><?= $block->escapeHtmlAttr(__('Add City')) ?></span></legend>
+                <fieldset class="fieldset row">
+                    <div class="fields col-md-6">
+                        <div class="field name required">
+                            <label class="label" for="title"><span><?= $block->
+                                    escapeHtmlAttr(__('City')) ?></span></label>
+                            <div class="control">
+                                <input name="name" id="name" title="Name" value="" class="input-text" type="text"
+                                       data-validate="{required:true, 'validate-alphanum-with-spaces':true}">
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </fieldset>
+            <div class="actions-toolbar">
+                <div class="primary">
+                    <button type="submit" class="action submit primary" title="Save"><span><?= $block->
+                            escapeHtmlAttr(__('Submit')) ?></span></button>
+                </div>
+            </div>
+        </form>
+        <?php $data = $block->getList(); ?>
+        <?php if(count($data)){ ?>
+        <ul>
+            <li><?= "City: ".$data['city']; ?></li>
+            <li><?= "Country: ".$data['country']; ?></li>
+            <li><?= "Description: ".$data['description']; ?></li>
+            <li><?= "Temperature "."(<span>&#8451;</span>): ".$data['temperature']; ?></li>
+            <li><?= "Feels Like "."(<span>&#8451;</span>): ".$data['feels_like']; ?></li>
+            <li><?= "Pressure (hPa): ".$data['pressure']; ?></li>
+            <li><?= "Humidity (%): ".$data['humidity']; ?></li>
+            <li><?= "Wind Speed (meter/sec): ".$data['wind_speed']; ?></li>
+            <li><?= "Sunrise (UTC): ".$data['sunrise']; ?></li>
+            <li><?= "Sunset (UTC): ".$data['sunset']; ?></li>
+        </ul>
+        <?php } ?>
+        <form
+            class="form"
+            style="margin: 100px 0px"
+            action="<?php echo $this->getPdfAction(); ?>">
+            <label style="font-size: 27px">Weather Historical Data</label>
+            <button class="action submit primary" style="font-size: 27px; margin-left: 30px; padding: 10px">Print All</button>
+        </form>
+    </div>
+</div>

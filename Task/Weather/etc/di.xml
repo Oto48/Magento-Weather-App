@@ -1,0 +1,18 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Task\Weather\Api\WeatherRepositoryInterface" type="Task\Weather\Model\WeatherRepository" />
+    <preference for="Task\Weather\Api\Data\WeatherInterface" type="Task\Weather\Model\Weather" />
+    <virtualType name="Task\Weather\Model\ResourceModel\Weather\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">city_weather</argument>
+            <argument name="resourceModel" xsi:type="string">Task\Weather\Model\ResourceModel\Weather</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="city_weather_listing_data_source" xsi:type="string">Task\Weather\Model\ResourceModel\Weather\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
+
